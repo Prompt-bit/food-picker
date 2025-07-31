@@ -5,6 +5,168 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Notebook Food Picker</title>
   <link rel="stylesheet" href="style.css" />
+  <!-- Backup CSS Codes-->
+  <style>
+    /* Reset */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 40px 0;
+  background: linear-gradient(to bottom, #fffbe7, #f8f0dc);
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+#card-container {
+  position: relative;
+  width: 500px;
+  height: 350px;
+  perspective: 1200px;
+  margin-bottom: 30px;
+}
+
+.card {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #fcfcf9;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  box-shadow: 4px 6px 20px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  text-align: center;
+
+  background-image:
+    linear-gradient(90deg, transparent 4%, rgba(0,0,0,0.02) 4%, rgba(0,0,0,0.02) 6%, transparent 6%),
+    linear-gradient(#eee 1px, transparent 1px);
+  background-size: 100% 24px;
+
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transform-origin: left;
+
+  opacity: 0;
+  z-index: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+  overflow: visible;
+}
+
+/* Remove old transitions to use keyframe animations */
+  
+.card.active {
+  opacity: 1;
+  transform: rotateY(0deg);
+  z-index: 1;
+}
+
+/* Flip out to left (rotate from 0 to -180deg) */
+.card.flip-out {
+  opacity: 1;
+  animation: flipOutAnim 0.8s forwards;
+  z-index: 0;
+}
+
+/* Flip in from right (rotate from 180deg to 0) */
+.card.flip-in {
+  opacity: 0;
+  animation: flipInAnim 0.8s forwards;
+  z-index: 1;
+}
+
+@keyframes flipInAnim {
+  from {
+    transform: rotateY(180deg);
+    opacity: 0;
+  }
+  to {
+    transform: rotateY(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes flipOutAnim {
+  from {
+    transform: rotateY(0deg);
+    opacity: 1;
+  }
+  to {
+    transform: rotateY(-180deg);
+    opacity: 0;
+  }
+}
+
+.card h1 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #222;
+}
+
+.card h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #555;
+  margin-top: 12px;
+}
+
+.card p {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.card p.dessert {
+  color: #e91e63;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+button {
+  padding: 12px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #ff6f91;
+  color: white;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #ff4e78;
+}
+
+canvas {
+  display: none;
+}
+
+/* Fade animation for subtle no-change feedback */
+.fade {
+  animation: fadeAnimation 0.6s ease forwards;
+}
+
+@keyframes fadeAnimation {
+  0%   { opacity: 1; }
+  50%  { opacity: 0.4; }
+  100% { opacity: 1; }
+}
+  </style>
 </head>
 <body>
   <div id="card-container">
