@@ -2,32 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Random Food Picker</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Notebook Food Picker</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <h1>🍽️ Food for today is:</h1>
-    <ul id="food-list">
-      <li>Pizza</li>
-      <li>Burgers</li>
-      <li>French Fries</li>
-      <li>Noodles</li>
-      <li>Fried Rice</li>
-    </ul>
-
-    <h2>🍰 Dessert for today is:</h2>
-    <ul id="dessert-list">
-      <li>Chocolate</li>
-      <li>Pancakes</li>
-      <li>Jam Sandwich</li>
-      <li>Honey drink</li>
-      <li>Honey yogurt</li>
-    </ul>
-
-    <button onclick="randomizeFood()">🎲 Choose again</button>
+  <div id="card-container">
+    <div class="card active" id="card1"></div>
+    <div class="card" id="card2"></div>
   </div>
+
+  <div class="buttons">
+    <button id="flipBtn">🎲 Flip Page</button>
+    <button id="downloadBtn">📥 Save PNG</button>
+  </div>
+
+  <canvas id="canvas" width="800" height="500"></canvas>
 
   <script src="script.js"></script>
 </body>
