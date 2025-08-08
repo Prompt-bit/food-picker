@@ -107,3 +107,9 @@ cards[0].classList.add("active");
 
 document.getElementById("flipBtn").addEventListener("click", flipToNext);
 document.getElementById("downloadBtn").addEventListener("click", downloadImage);
+pic = document.getElementById("image").src = data.picture;
+const imageUrl = pic.getImageUrl();
+
+
+document.getElementById('profile-pic').src = data.picture;
+document.getElementById('profile-name').textContent = data.name;
